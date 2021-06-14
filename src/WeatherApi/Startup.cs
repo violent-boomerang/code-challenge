@@ -1,3 +1,5 @@
+using Application;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +30,7 @@ namespace WeatherApi
 		{
 
 			services.AddControllers();
+			services.AddApplicationMediatr();
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "WeatherApi", Version = "v1" });
