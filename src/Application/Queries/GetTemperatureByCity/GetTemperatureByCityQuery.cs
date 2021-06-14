@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Queries
 {
-	class GetTemperatureByCityQuery : IRequest<TemperatureDto>
+	public class GetTemperatureByCityQuery : IRequest<TemperatureDto>
 	{
 	}
 }

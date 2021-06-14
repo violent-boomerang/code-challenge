@@ -24,9 +24,10 @@ namespace WeatherApi.Controllers
 		}
 
 		[HttpGet("temperature")]
-		public Task<ActionResult<TemperatureDto>> GetTemperatureByLocation([FromQuery] string city)
+		public async Task<ActionResult<TemperatureDto>> GetTemperatureByLocation([FromQuery] string city)
 		{
-			return null;
+			var query = new GetTemperatureByCityQuery();
+			return await _mediator.Send(query);
 		}
 	}
 }
