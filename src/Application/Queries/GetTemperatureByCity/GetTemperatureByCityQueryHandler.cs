@@ -22,8 +22,9 @@ namespace Application.Queries
 
 		public Task<TemperatureDto> Handle(GetTemperatureByCityQuery request, CancellationToken cancellationToken)
 		{
-			var res = _api.Test();
+			var res = _api.GetTemperatureByCity(request.CityName);
 			throw new NotImplementedException();
+
 		}
 	}
 }

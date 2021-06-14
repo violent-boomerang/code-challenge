@@ -9,5 +9,6 @@ namespace Application.Queries
 {
 	public class GetTemperatureByCityQuery : IRequest<TemperatureDto>
 	{
+		public string CityName { get; set; }
 	}
 }
