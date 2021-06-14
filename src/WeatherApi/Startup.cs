@@ -1,4 +1,5 @@
 using Application;
+using Application.Models;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,9 +29,17 @@ namespace WeatherApi
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddOptions();
+
+			var weatherApiConfigurationSection = Configuration.GetSection("OpenWeatherApi");
+
+			var openWeatherApiSettings = new OpenWeatherApiSettings();
+			weatherApiConfigurationSection.Bind(openWeatherApiSettings);
+
+			services.Configure<OpenWeatherApiSettings>(weatherApiConfigurationSection);
 
 			services.AddControllers();
-			services.AddApplicationMediatr();
+			services.AddApplication(openWeatherApiSettings);
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "WeatherApi", Version = "v1" });
